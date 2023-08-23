@@ -2,11 +2,10 @@ package com.example.card.Email.presentation;
 
 import com.example.card.Email.business.SendEmailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/SendEmail")
@@ -18,8 +17,8 @@ public class SendEmailController {
         this.sendEmailService = sendEmailService;
     }
 
-    @PostMapping("/seller/register")
-    public ResponseEntity<String> registerSeller(@Valid @ResponseBody SellerRegisterDto sellerRegisterDto){
-         return userDaoService.registerSeller(sellerRegisterDto);
+    @PostMapping("")
+    public ResponseEntity<String> sedEmail(String to, String subject, String text){
+         return sendEmailService.sendSimpleMessage(to,subject,text);
     }
 }
