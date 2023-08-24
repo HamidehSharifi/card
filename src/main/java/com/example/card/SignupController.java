@@ -1,10 +1,7 @@
 package com.example.card;
 
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
 @RestController
@@ -13,8 +10,8 @@ public class SignupController {
 
     private final SignupService signupService;
 
-    @GetMapping("/email")
-    String sign(@RequestParam String email) {
+    @GetMapping("/{email}")
+    String sign(@PathVariable String email) {
         return signupService.signup(email);
     }
 
